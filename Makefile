@@ -6,7 +6,7 @@ hello:
 	@echo "\n${WELCOME}\n"
 
 server:
-	@go run main.go
+	@node server.js
 
 react:
 	@watchify -t reactify lib/js/app.js -o bundle.js
