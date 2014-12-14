@@ -1,0 +1,27 @@
+{
+  "name": "go-gadget-tweetstream",
+  "version": "0.0.1",
+  "description": "Twitter stream with Go, socket.io, and ReactJS",
+  "scripts": {
+    "start": "make -j",
+    "test": "jest"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
+  },
+  "author": "Mike Wilcox <mwilcox56@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^7.0.0",
+    "browser-sync": "^1.7.2",
+    "jest-cli": "^0.1.18",
+    "react": "^0.12.1",
+    "react-tools": "^0.12.1",
+    "reactify": "^0.17.1",
+    "socket.io-client": "^1.2.1",
+    "watchify": "^2.2.1"
+  }
+}
