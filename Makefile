@@ -9,7 +9,7 @@ server:
 	@node server.js
 
 react:
-	@watchify -t reactify lib/js/app.js -o bundle.js
+	@watchify -p [tsify] -t reactify lib/js/app.ts -o bundle.js
 
 browser:
 	@browser-sync start --files "*.js" --server
