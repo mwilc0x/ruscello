@@ -13,29 +13,32 @@ export interface Tweets {
   text: string;
 }
 
-interface TweetListIState {
+export interface TweetListIProps {
+}
+
+export interface TweetListIState {
     tweets: Tweets[];
 }
 
-class TweetListClass extends TypedReact.Component<{}, TweetListIState> {
+class TweetListClass extends TypedReact.Component<TweetListIProps, TweetListIState> {
 
     getInitialState() {
       return {
         tweets: []
-      };
+      }
     }
 
     componentDidMount() {
       var socket = io('http://localhost:8080');
 
-      socket.on('tweets-data', (data) => {
+      /*socket.on('tweets-data', (data) => {
         var newState = React.addons.update(this.state, {
           tweets: {
             $unshift: [{ id: data.id, text: data.text }]
           }
         });
         this.setState(newState);
-      });
+      });*/
 
       socket.on('connect', (data) => {
         socket.emit('get-tweets-data');
@@ -45,11 +48,11 @@ class TweetListClass extends TypedReact.Component<{}, TweetListIState> {
 
     render() {
 
-        var tweets = this.state.tweets.map((result) => {
+        /*var tweets = this.state.tweets.map((result) => {
           React.createElement(component.Tweet, { key: result.id, text: result.text }, null)
-        });
+        });*/
 
-        return React.DOM.div({ className: "tweetList" }, tweets);
+        return React.DOM.div({ className: "tweetList" }, null);
     }
 }
 
