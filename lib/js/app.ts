@@ -6,20 +6,7 @@ import React = require('react/addons');
 import TypedReact = require("typed-react");
 import component = require('./components/tweet-list');
 
-export interface AppProps {
-}
-
-export interface AppState {
-}
-
-class AppClass extends TypedReact.Component<AppProps, AppState> {
-
-    componentDidMount() {
-    }
-
-    componentWillUnmount() {
-    }
-
+class AppClass extends TypedReact.Component<{}, {}> {
     render() {
         React.render(
           React.DOM.div(null, React.createElement(component.TweetList, null, null)), document.getElementById("tweets")
@@ -27,4 +14,4 @@ class AppClass extends TypedReact.Component<AppProps, AppState> {
     }
 }
 
-export var App = React.createFactory(TypedReact.createClass<AppProps, AppState>(AppClass));
+export var App = React.createFactory(TypedReact.createClass<{}, {}>(AppClass));
