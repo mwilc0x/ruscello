@@ -23,7 +23,9 @@
     "reactify": "^0.17.1",
     "socket.io": "^1.2.1",
     "socket.io-client": "^1.2.1",
+    "tsify": "^0.6.5",
     "twit": "^1.1.18",
+    "typed-react": "^3.2.0",
     "watchify": "^2.2.1"
   }
 }
