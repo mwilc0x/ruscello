@@ -4,11 +4,13 @@
 import React = require('react');
 import TypedReact = require("typed-react");
 
-export interface TweetIProps {
+interface TweetIProps {
     text: string;
 }
 
-class TweetClass extends TypedReact.Component<TweetIProps, {}> {
+interface TweetIState {}
+
+class TweetClass extends TypedReact.Component<TweetIProps, TweetIState> {
     render() {
         return React.DOM.div({ className: "tweet" }, this.props.text);
     }
