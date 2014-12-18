@@ -5,7 +5,7 @@
 
 declare module React {
     //
-    // React Elements 
+    // React Elements
     // ----------------------------------------------------------------------
 
     // type ReactType = ComponentClass<any> | string;
@@ -22,7 +22,7 @@ declare module React {
     interface ComponentElement<P> extends ReactElement<P> {}
 
     //
-    // React Nodes 
+    // React Nodes
     // ----------------------------------------------------------------------
 
     // type ReactText = string | number;
@@ -30,7 +30,7 @@ declare module React {
     // type ReactNode = ReactElement<any, any> | Fragment | ReactText;
 
     //
-    // React Components 
+    // React Components
     // ----------------------------------------------------------------------
 
     interface ComponentStatics<P> {
@@ -52,7 +52,7 @@ declare module React {
     interface Factory<P> {
         (props?: P, ...children: any/*ReactNode*/[]): ReactElement<P>;
     }
-    
+
     interface HTMLFactory extends Factory<HTMLAttributes> {}
     interface SVGFactory extends Factory<SVGAttributes> {}
     interface ComponentFactory<P> extends Factory<P> {}
@@ -95,7 +95,7 @@ declare module React {
 
     interface HTMLComponent extends DOMComponent<HTMLAttributes> {}
     interface SVGComponent extends DOMComponent<SVGAttributes> {}
-    
+
     interface CompositeComponent<P, S> extends Component<P>, ComponentSpec<P, S> {
         state: S;
         setState(nextState: S, callback?: () => void): void;
@@ -417,7 +417,7 @@ declare module React {
 
     interface SVGAttributes extends ReactAttributes {
         cx?: any; // SVGLength | SVGAnimatedLength
-        cy?: any; 
+        cy?: any;
         d?: string;
         dx?: any; // SVGLength | SVGAnimatedLength
         dy?: any; // SVGLength | SVGAnimatedLength
@@ -462,7 +462,7 @@ declare module React {
     }
 
     //
-    // React.DOM 
+    // React.DOM
     // ----------------------------------------------------------------------
 
     interface ReactDOM {
@@ -685,9 +685,9 @@ declare module React {
     // ----------------------------------------------------------------------
 
     interface UpdateSpec {
-        $set: any;
-        $merge: {};
-        $apply(value: any): any;
+        $set?: any;
+        //$merge?: {};
+        //$apply(value: any)?: any;
         // [key: string]: UpdateSpec;
     }
 
@@ -923,4 +923,3 @@ declare module "react/addons" {
     var exports: React.AddonsExports;
     export = exports;
 }
-
