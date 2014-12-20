@@ -2,10 +2,10 @@
 /// <reference path='../typings/Q.d.ts' />
 
 import io = require('socket.io-client');
-import Q = require('q');
+import q = require('q');
 
 export interface IRuscelloWebAPI {
-  initData(): Promise;
+  initData(): Promise<any>;
 }
 
 class RuscelloWebAPI implements IRuscelloWebAPI {
@@ -18,14 +18,14 @@ class RuscelloWebAPI implements IRuscelloWebAPI {
 
   initData: function() {
 
-    var defer = Q.defer();
+    var defer = q.defer();
 
-    _socket.on('tweets-data', (data) => {
+    this._socket.on('tweets-data', (data) => {
       defer.resolve(data);
     });
 
-    _socket.on('connect', () => {
-      socket.emit('get-tweets-data');
+    this._socket.on('connect', () => {
+      this._socket.emit('get-tweets-data');
     });
 
     return defer.promise;
