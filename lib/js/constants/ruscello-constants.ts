@@ -1,17 +1,16 @@
 var keyMirror = require('keymirror');
 
-module.exports = {
+class RuscelloConstants {
 
-  ActionTypes: keyMirror({
-    CLICK_THREAD: null,
-    CREATE_MESSAGE: null,
-    RECEIVE_RAW_CREATED_MESSAGE: null,
-    RECEIVE_RAW_MESSAGES: null
+  public ActionTypes: keyMirror({
+    RECEIVE_RAW_TWEET: null
   }),
 
-  PayloadSources: keyMirror({
+  public PayloadSources: keyMirror({
     SERVER_ACTION: null,
     VIEW_ACTION: null
   })
 
-};
+}
+
+export = RuscelloConstants;
