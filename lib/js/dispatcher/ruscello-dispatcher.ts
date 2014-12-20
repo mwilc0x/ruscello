@@ -31,4 +31,4 @@ class RuscelloDispatcher extends flux.Dispatcher<any> {
 
 });
 
-export var RuscelloDispatcher = RuscelloDispatcher;
+export = RuscelloDispatcher;
