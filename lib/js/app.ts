@@ -1,10 +1,10 @@
 /// <reference path='typings/react.d.ts' />
-/// <reference path='components/tweet-list.ts' />
+/// <reference path='components/tweet-list.react.ts' />
 /// <reference path='../../node_modules/typed-react/dist/typed-react.d.ts' />
 
 import React = require('react/addons');
 import TypedReact = require("typed-react");
-import component = require('./components/tweet-list');
+import component = require('./components/tweet-list.react');
 
 interface AppIProps {}
 
