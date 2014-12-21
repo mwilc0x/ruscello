@@ -1,15 +1,31 @@
-var keyMirror = require('keymirror');
+interface IRuscelloConstants {
+  ActionTypes(): any;
+  PayloadSources(): any;
+}
 
-class RuscelloConstants {
+class RuscelloConstants implements IRuscelloConstants {
 
-  public ActionTypes = keyMirror({
-    RECEIVE_RAW_TWEET: null
-  });
+  private _ActionTypes: any;
+  private _PayloadSources: any;
 
-  public PayloadSources = keyMirror({
-    SERVER_ACTION: null,
-    VIEW_ACTION: null
-  });
+  constructor() {
+    this._ActionTypes = {
+      RECEIVE_RAW_TWEET: null
+    };
+
+    this._PayloadSources = {
+      SERVER_ACTION: null,
+      VIEW_ACTION: null
+    };
+  }
+
+  ActionTypes() {
+    return this._ActionTypes;
+  }
+
+  PayloadSources() {
+    return this._PayloadSources;
+  }
 
 }
 
