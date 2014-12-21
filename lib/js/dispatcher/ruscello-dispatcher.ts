@@ -10,16 +10,20 @@ interface IRuscelloDispatcher  {
 
 class RuscelloDispatcher extends flux.Dispatcher<any> {
 
+  private _constants: any;
+
+  constructor() {
+    super();
+    this._constants = new RuscelloConstants().PayloadSources();
+  }
+
   /**
    * @param {object} action The details of the action, including the action's
    * type and additional data coming from the server.
    */
   handleServerAction(action) {
-
-    var constants = new RuscelloConstants().PayloadSources();
-
     var payload = {
-      source: constants.SERVER_ACTION,
+      source: this._constants.SERVER_ACTION,
       action: action
     };
     this.dispatch(payload);
@@ -30,11 +34,8 @@ class RuscelloDispatcher extends flux.Dispatcher<any> {
    * type and additional data coming from the view.
    */
   handleViewAction(action) {
-
-    var constants = new RuscelloConstants().PayloadSources();
-
     var payload = {
-      source: constants.VIEW_ACTION,
+      source: this._constants.VIEW_ACTION,
       action: action
     };
     this.dispatch(payload);
