@@ -2,21 +2,23 @@
 /// <reference path='../typings/Q.d.ts' />
 
 import io = require('socket.io-client');
-import actions = require('../actions/ruscello-server-action-creators')
+import Actions = require('../actions/ruscello-server-action-creators')
 
-export interface IRuscelloWebAPI {
+interface IRuscelloWebAPI {
   initData(): void;
 }
 
 class RuscelloWebAPI implements IRuscelloWebAPI {
 
-  private _socket: Socket;
+  private _socket: any;
 
   constructor() {
     this._socket = io('http://localhost:8080');
   }
 
-  initData: function() {
+  initData() {
+
+    var actions = new Actions();
 
     this._socket.on('tweets-data', (data) => {
       actions.receiveTweet(data);
