@@ -3,20 +3,23 @@
 import RuscelloConstants = require('../constants/ruscello-constants');
 import flux = require('flux');
 
-export interface IRuscelloDispatcher extends flux.Dispatcher<any> {
+interface IRuscelloDispatcher  {
   handleServerAction(any): void;
   handleViewAction(any): void;
 }
 
-class RuscelloDispatcher implements IRuscelloDispatcher {
+class RuscelloDispatcher extends flux.Dispatcher<any> {
 
   /**
    * @param {object} action The details of the action, including the action's
    * type and additional data coming from the server.
    */
   handleServerAction(action) {
+
+    var constants = new RuscelloConstants().PayloadSources();
+
     var payload = {
-      source: RuscelloConstants.PayloadSources.SERVER_ACTION,
+      source: constants.SERVER_ACTION,
       action: action
     };
     this.dispatch(payload);
@@ -27,8 +30,11 @@ class RuscelloDispatcher implements IRuscelloDispatcher {
    * type and additional data coming from the view.
    */
   handleViewAction(action) {
+
+    var constants = new RuscelloConstants().PayloadSources();
+
     var payload = {
-      source: RuscelloConstants.PayloadSources.VIEW_ACTION,
+      source: constants.VIEW_ACTION,
       action: action
     };
     this.dispatch(payload);
