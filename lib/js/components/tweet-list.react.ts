@@ -8,6 +8,7 @@ import React_Addons = require('react/addons');
 import TypedReact = require("typed-react");
 import component = require('./tweet.react');
 import io = require('socket.io-client');
+import TweetStore = require('../stores/tweet-store');
 
 interface Tweets {
   id: string;
