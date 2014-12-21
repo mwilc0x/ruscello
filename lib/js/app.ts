@@ -5,6 +5,7 @@
 import React = require('react/addons');
 import TypedReact = require("typed-react");
 import component = require('./components/tweet-list.react');
+import RuscelloWebAPI = require('./utils/ruscello-web-api');
 
 interface AppIProps {}
 
@@ -19,6 +20,11 @@ class AppClass extends TypedReact.Component<AppIProps, AppIState> {
 export var App = React.createFactory(TypedReact.createClass<AppIProps, AppIState>(AppClass));
 
 window.onload = function () {
-    var app = App({});
-    React.render(app, document.getElementById("tweets"));
+
+  var webAPI = new RuscelloWebAPI();
+
+  webAPI.initData();
+
+  var app = App({});
+  React.render(app, document.getElementById("tweets"));
 };
