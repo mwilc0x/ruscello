@@ -24,6 +24,13 @@ interface TweetListIState {
 
 class TweetListClass extends TypedReact.Component<TweetListIProps, TweetListIState> {
 
+    private _tweetStore: TweetStore;
+
+    constructor() {
+      super();
+      this._tweetStore = new TweetStore();
+    }
+
     getInitialState() {
       return {
         tweets: []
@@ -31,22 +38,7 @@ class TweetListClass extends TypedReact.Component<TweetListIProps, TweetListISta
     }
 
     componentDidMount() {
-      var socket = io('http://localhost:8080');
-
-      socket.on('tweets-data', (data) => {
-
-        var newState = React_Addons.addons.update(this.state, {
-          tweets: {
-            $unshift: [{ id: data.id, text: data.text }]
-          }
-        });
-        this.setState(newState);
-      });
-
-      socket.on('connect', (data) => {
-        socket.emit('get-tweets-data');
-      });
-
+      this._tweetStore.addChangeListener(this._onChange);
     }
 
     render() {
@@ -56,6 +48,17 @@ class TweetListClass extends TypedReact.Component<TweetListIProps, TweetListISta
 
         return React.DOM.div({ className: "tweetList" }, tweets);
     }
+
+    private _getStateFromStores() {
+      return {
+        tweets: this._tweetStore.get()
+      };
+    }
+
+    private _onChange() {
+      this.setState(this._getStateFromStores());
+    }
+
 }
 
 export var TweetList = TypedReact.createClass(TweetListClass);
