@@ -51,7 +51,7 @@ class TweetListClass extends TypedReact.Component<TweetListIProps, TweetListISta
 
     private _getStateFromStores() {
       return {
-        tweets: this._tweetStore.get()
+        tweets: this._tweetStore.getTweets()
       };
     }
 
