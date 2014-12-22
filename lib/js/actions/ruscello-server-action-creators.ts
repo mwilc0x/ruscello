@@ -7,12 +7,12 @@ interface IRuscelloServerActionCreators {
 
 class RuscelloServerActionCreators implements IRuscelloServerActionCreators {
 
-  private _dispatcher: RuscelloDispatcher;
+  private _dispatcher: any;
   private _ActionTypes: any;
 
   constructor() {
     this._ActionTypes = new RuscelloConstants().ActionTypes();
-    this._dispatcher = new RuscelloDispatcher();
+    this._dispatcher = RuscelloDispatcher;
   }
 
   receiveTweet(tweet) {
