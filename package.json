@@ -1,7 +1,7 @@
 {
-  "name": "go-gadget-tweetstream",
-  "version": "0.0.1",
-  "description": "Twitter stream with Go, socket.io, and ReactJS",
+  "name": "ruscello",
+  "version": "0.1.0",
+  "description": "a TypeScript flux implementation",
   "scripts": {
     "start": "make -j",
     "test": "jest"
@@ -17,7 +17,7 @@
   "devDependencies": {
     "browser-sync": "^1.7.2",
     "browserify": "^7.0.0",
-    "events": "^1.0.2",
+    "eventemitter2": "^0.4.14",
     "flux": "^2.0.1",
     "jest-cli": "^0.1.18",
     "keymirror": "^0.1.0",
