@@ -3,49 +3,49 @@
 import RuscelloDispatcher = require('../dispatcher/ruscello-dispatcher');
 import RuscelloConstants = require('../constants/ruscello-constants');
 import RuscelloUtils = require('../utils/ruscello-web-api');
-import EventEmitter = require('eventemitter2');
+import Events = require('eventemitter2');
 
-class TweetStore extends EventEmitter2 {
+class TweetStore extends Events.EventEmitter2 {
 
-  private _dispatcher: RuscelloDispatcher;
+  private _dispatcher: any;
   private _actionTypes: any;
   private _utils: RuscelloUtils;
-  private _eventEmitter: any;
-  private CHANGE_EVENT: string;
+  private _CHANGE_EVENT: string;
   private _tweets: any[];
 
   constructor() {
-
     super();
+    this._init();
+  }
 
-    this._dispatcher = new RuscelloDispatcher();
+  private _init() {
+    this._dispatcher = RuscelloDispatcher;
     this._actionTypes = new RuscelloConstants().ActionTypes();
     this._utils = new RuscelloUtils();
-    this._eventEmitter = EventEmitter.EventEmitter2;
-
-    this.CHANGE_EVENT = 'change';
-
-    this._dispatcher.register(this._dispatchToken);
+    this._CHANGE_EVENT = 'change';
+    this._tweets = [];
+    this._dispatcher.register(this._dispatchToken.bind(this));
   }
 
   emitChange() {
-    this.emit(this.CHANGE_EVENT);
+    this.emit(this._CHANGE_EVENT);
   }
 
   addChangeListener(callback) {
-    this.on(this.CHANGE_EVENT, callback);
+    this.on(this._CHANGE_EVENT, callback);
   }
 
   removeChangeListener(callback) {
-    this.removeListener(this.CHANGE_EVENT, callback);
+    this.removeListener(this._CHANGE_EVENT, callback);
   }
 
-  get() {
+  getTweets() {
     return this._tweets;
   }
 
-  private _addTweet(tweet) {
-    this._tweets.push(tweet);
+  private _addTweet(data) {
+    var tweet = data.rawTweet;
+    this._tweets.unshift({ id: tweet.id, text: tweet.text });
   }
 
   private _dispatchToken(payload: any) {
