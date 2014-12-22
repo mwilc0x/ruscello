@@ -3,7 +3,7 @@
 import RuscelloConstants = require('../constants/ruscello-constants');
 import flux = require('flux');
 
-interface IRuscelloDispatcher  {
+interface IRuscelloDispatcher {
   handleServerAction(any): void;
   handleViewAction(any): void;
 }
@@ -43,4 +43,6 @@ class RuscelloDispatcher extends flux.Dispatcher<any> {
 
 }
 
-export = RuscelloDispatcher;
+var dispatcher = new RuscelloDispatcher()
+
+export = dispatcher;
