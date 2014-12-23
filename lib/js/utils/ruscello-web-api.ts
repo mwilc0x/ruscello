@@ -10,8 +10,8 @@ interface IRuscelloWebAPI {
 
 class RuscelloWebAPI implements IRuscelloWebAPI {
 
-  private _socket: any;
-  private _actions: any;
+  private _socket: SocketIOClient.Socket;
+  private _actions: Actions;
 
   constructor() {
     this._socket = io('http://localhost:8080');
@@ -20,7 +20,7 @@ class RuscelloWebAPI implements IRuscelloWebAPI {
 
   initData() {
     this._socket.on('tweets-data', (data) => {
-      this._actions.receiveTweet(data);
+      this._actions.receiveTweet({ id: data.id, text: data.text });
     });
 
     this._socket.on('connect', () => {

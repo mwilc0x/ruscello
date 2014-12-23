@@ -7,21 +7,15 @@ import Events = require('eventemitter2');
 
 class TweetStore extends Events.EventEmitter2 {
 
-  private _dispatcher: any;
-  private _actionTypes: any;
-  private _utils: RuscelloUtils;
+  private _dispatcher: typeof RuscelloDispatcher;
+  private _actionTypes: ActionTypes;
   private _CHANGE_EVENT: string;
-  private _tweets: any[];
+  private _tweets: Tweet[];
 
   constructor() {
     super();
-    this._init();
-  }
-
-  private _init() {
     this._dispatcher = RuscelloDispatcher;
     this._actionTypes = new RuscelloConstants().ActionTypes();
-    this._utils = new RuscelloUtils();
     this._CHANGE_EVENT = 'change';
     this._tweets = [];
     this._dispatcher.register(this._dispatchToken.bind(this));
@@ -44,8 +38,7 @@ class TweetStore extends Events.EventEmitter2 {
   }
 
   private _addTweet(data) {
-    var tweet = data.rawTweet;
-    this._tweets.unshift({ id: tweet.id, text: tweet.text });
+    this._tweets.unshift(data.tweet);
   }
 
   private _dispatchToken(payload: any) {
@@ -62,6 +55,7 @@ class TweetStore extends Events.EventEmitter2 {
         // do nothing
     }
   }
+
 }
 
 export = TweetStore;

@@ -3,14 +3,14 @@
 import keyMirror = require('keymirror');
 
 interface IRuscelloConstants {
-  ActionTypes(): any;
-  PayloadSources(): any;
+  ActionTypes(): ActionTypes;
+  PayloadSources(): PayloadSources;
 }
 
 class RuscelloConstants implements IRuscelloConstants {
 
-  private _ActionTypes: any;
-  private _PayloadSources: any;
+  private _ActionTypes: ActionTypes;
+  private _PayloadSources: PayloadSources;
 
   constructor() {
     this._ActionTypes = keyMirror({

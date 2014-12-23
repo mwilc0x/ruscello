@@ -4,13 +4,13 @@ import RuscelloConstants = require('../constants/ruscello-constants');
 import flux = require('flux');
 
 interface IRuscelloDispatcher {
-  handleServerAction(any): void;
-  handleViewAction(any): void;
+  handleServerAction(action: Tweet): void;
+  handleViewAction(action: any): void; // TODO: implement
 }
 
 class RuscelloDispatcher extends flux.Dispatcher<any> {
 
-  private _constants: any;
+  private _constants: PayloadSources;
 
   constructor() {
     super();
