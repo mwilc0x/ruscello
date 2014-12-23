@@ -1,4 +1,4 @@
-WELCOME=\033[37m--------------------- Twitter Stream Using Go, Socket.io, and ReactJs 👍 -----------------------------\033[39m
+WELCOME=\033[37m🌊🌊🌊🌊🌊🌊🌊🌊🌊 ruscello: a TypeScript Flux implementation 🌊🌊🌊🌊🌊🌊🌊🌊🌊\033[39m
 
 all: hello react server browser
 
