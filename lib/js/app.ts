@@ -1,4 +1,5 @@
 /// <reference path='typings/react.d.ts' />
+/// <reference path='typings/ruscello.d.ts' />
 /// <reference path='components/tweet-list.react.ts' />
 /// <reference path='../../node_modules/typed-react/dist/typed-react.d.ts' />
 
@@ -8,7 +9,6 @@ import component = require('./components/tweet-list.react');
 import RuscelloWebAPI = require('./utils/ruscello-web-api');
 
 interface AppIProps {}
-
 interface AppIState {}
 
 class AppClass extends TypedReact.Component<AppIProps, AppIState> {
@@ -20,11 +20,9 @@ class AppClass extends TypedReact.Component<AppIProps, AppIState> {
 export var App = React.createFactory(TypedReact.createClass<AppIProps, AppIState>(AppClass));
 
 window.onload = function () {
-
-  var webAPI = new RuscelloWebAPI();
+  var webAPI = new RuscelloWebAPI(),
+      app = App({});
 
   webAPI.initData();
-
-  var app = App({});
   React.render(app, document.getElementById("tweets"));
 };
