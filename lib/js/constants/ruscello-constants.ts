@@ -14,7 +14,7 @@ class RuscelloConstants implements IRuscelloConstants {
 
   constructor() {
     this._ActionTypes = keyMirror({
-      RECEIVE_RAW_TWEET: null
+      RECEIVE_BOOKS: null
     });
 
     this._PayloadSources = keyMirror({

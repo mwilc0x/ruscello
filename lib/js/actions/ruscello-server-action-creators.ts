@@ -2,7 +2,7 @@ import RuscelloDispatcher = require('../dispatcher/ruscello-dispatcher');
 import RuscelloConstants = require('../constants/ruscello-constants');
 
 interface IRuscelloServerActionCreators {
-  receiveTweet(tweet: Tweet): void;
+  receiveBooks(books: Book[]): void;
 }
 
 class RuscelloServerActionCreators implements IRuscelloServerActionCreators {
@@ -15,10 +15,10 @@ class RuscelloServerActionCreators implements IRuscelloServerActionCreators {
     this._dispatcher = RuscelloDispatcher;
   }
 
-  receiveTweet(tweet) {
+  receiveBooks(books) {
     this._dispatcher.handleServerAction({
-      type: this._ActionTypes.RECEIVE_RAW_TWEET,
-      tweet: tweet
+      type: this._ActionTypes.RECEIVE_BOOKS,
+      books: books
     });
   }
 

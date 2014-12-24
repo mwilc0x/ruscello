@@ -19,12 +19,12 @@ class RuscelloWebAPI implements IRuscelloWebAPI {
   }
 
   initData() {
-    this._socket.on('tweets-data', (data) => {
-      this._actions.receiveTweet({ id: data.id, text: data.text });
+    this._socket.on('book-data', (data) => {
+      this._actions.receiveBooks(data);
     });
 
     this._socket.on('connect', () => {
-      this._socket.emit('get-tweets-data');
+      this._socket.emit('get-books-data');
     });
   }
 
