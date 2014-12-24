@@ -1,20 +1,12 @@
 var express = require('express'),
   http = require('http'),
   socketio = require('socket.io'),
-  Twit = require('twit'),
   app = express(),
-  port = 8080;
+  port = 8080,
+  request = require('request'),
+  cheerio = require('cheerio');
 
 app.use("/", express.static(__dirname + "/public/"));
-
-var Twit = require('twit')
-
-var T = new Twit({
-    consumer_key:         process.env.TWITTER_CONSUMER_KEY
-  , consumer_secret:      process.env.TWITTER_CONSUMER_SECRET
-  , access_token:         process.env.TWITTER_ACCESS_TOKEN
-  , access_token_secret:  process.env.TWITTER_TOKEN_SECRET
-})
 
 var server = http.createServer(app).listen(port, function() {
   console.log('express server listening on port ' + port);
@@ -23,18 +15,38 @@ var server = http.createServer(app).listen(port, function() {
 var io = socketio.listen(server);
 
 io.on('connection', function(socket) {
-
-  console.log('new connection initiated');
-
-  socket.on('get-tweets-data', function() {
-    console.log('initiating data');
-
-    var stream = T.stream('statuses/filter', { track: 'taylorswift13' })
-
-    stream.on('tweet', function (tweet) {
-      socket.emit('tweets-data', tweet)
-    });
-
+  socket.on('get-books-data', function() {
+    scrapeNYT(socket);
   });
+});
 
-})
+/**
+* Scrape latest NYT Best Sellers List
+*/
+function scrapeNYT(socket) {
+  var data = [],
+      i = 0,
+      url = 'http://www.nytimes.com/best-sellers-books/2014-12-28/combined-print-and-e-book-fiction/list.html#';
+
+  request(url, function(error, response, html){
+    if(!error){
+      var $ = cheerio.load(html);
+
+      $('table.bestSellersList tbody').children().each(function(){
+        if($(this).hasClass('bookDetails')) {
+
+          data.push(
+            {
+              id: i,
+              index: $(this).find('td.index').text(),
+              summary: $(this).find('td.summary').text().trim()
+            }
+          );
+
+          ++i;
+        }
+      });
+      socket.emit('book-data', data);
+    }
+  });
+}
