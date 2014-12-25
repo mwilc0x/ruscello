@@ -4,24 +4,12 @@
 /// <reference path='../../../node_modules/typed-react/dist/typed-react.d.ts' />
 
 import React = require('react');
-import React_Addons = require('react/addons');
 import TypedReact = require("typed-react");
 import component = require('./book-bestseller.react');
-import io = require('socket.io-client');
 import BookStore = require('../stores/book-store');
 
-interface Books {
-  id: string;
-  index: string;
-  summary: string;
-}
-
-interface BestSellerListIProps {
-}
-
-interface BestSellerListIState {
-    books: Books[];
-}
+interface BestSellerListIProps {}
+interface BestSellerListIState { books: Book[]; }
 
 class BestSellerListClass extends TypedReact.Component<BestSellerListIProps, BestSellerListIState> {
 
