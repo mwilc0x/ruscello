@@ -11,7 +11,7 @@ npm install && npm start
 ## About
 I kept this very minimalistic on purpose. Feel free to fork or clone and hack.
 
-Uses cheerio to scrape NYT Best Sellers list and ship it to UI.
+Uses [cheerio](https://github.com/cheeriojs/cheerio) to scrape NYT Best Sellers list and ship it to UI via [socket.io](https://github.com/Automattic/socket.io).
 
 Under the hood it is using [facebook's flux](https://github.com/facebook/flux) with
 the corresponding [type definitions](https://github.com/borisyankov/DefinitelyTyped/tree/master/flux).
