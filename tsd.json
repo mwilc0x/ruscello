@@ -1,0 +1,45 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "cheerio/cheerio.d.ts": {
+      "commit": "0b6a5fb4e0c10177255606034dcfc3ccbc981001"
+    },
+    "eventemitter2/eventemitter2.d.ts": {
+      "commit": "0b6a5fb4e0c10177255606034dcfc3ccbc981001"
+    },
+    "express/express.d.ts": {
+      "commit": "0b6a5fb4e0c10177255606034dcfc3ccbc981001"
+    },
+    "form-data/form-data.d.ts": {
+      "commit": "0b6a5fb4e0c10177255606034dcfc3ccbc981001"
+    },
+    "node/node.d.ts": {
+      "commit": "0b6a5fb4e0c10177255606034dcfc3ccbc981001"
+    },
+    "q/Q.d.ts": {
+      "commit": "0b6a5fb4e0c10177255606034dcfc3ccbc981001"
+    },
+    "react/legacy/react-addons-0.11.d.ts": {
+      "commit": "0b6a5fb4e0c10177255606034dcfc3ccbc981001"
+    },
+    "react/react.d.ts": {
+      "commit": "0b6a5fb4e0c10177255606034dcfc3ccbc981001"
+    },
+    "request/request.d.ts": {
+      "commit": "0b6a5fb4e0c10177255606034dcfc3ccbc981001"
+    },
+    "flux/flux.d.ts": {
+      "commit": "0b6a5fb4e0c10177255606034dcfc3ccbc981001"
+    },
+    "socket.io-client/socket.io-client.d.ts": {
+      "commit": "0b6a5fb4e0c10177255606034dcfc3ccbc981001"
+    },
+    "socket.io/socket.io.d.ts": {
+      "commit": "0b6a5fb4e0c10177255606034dcfc3ccbc981001"
+    }
+  }
+}
