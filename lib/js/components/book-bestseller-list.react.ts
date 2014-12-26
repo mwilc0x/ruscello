@@ -1,8 +1,3 @@
-/// <reference path='book-bestseller.react.ts' />
-/// <reference path='../typings/react.d.ts' />
-/// <reference path='../typings/socket.io-client.d.ts' />
-/// <reference path='../../../node_modules/typed-react/dist/typed-react.d.ts' />
-
 import React = require('react');
 import TypedReact = require("typed-react");
 import component = require('./book-bestseller.react');

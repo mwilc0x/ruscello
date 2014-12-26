@@ -1,9 +1,8 @@
-/// <reference path='typings/react.d.ts' />
-/// <reference path='typings/ruscello.d.ts' />
-/// <reference path='components/book-bestseller-list.react.ts' />
-/// <reference path='../../node_modules/typed-react/dist/typed-react.d.ts' />
+/// <reference path='../../typings/tsd.d.ts' />
+/// <reference path='../../typings/ruscello.d.ts' />
+/// <reference path='../../typings/keymirror.d.ts' />
 
-import React = require('react/addons');
+import React = require('react');
 import TypedReact = require("typed-react");
 import component = require('./components/book-bestseller-list.react');
 import RuscelloWebAPI = require('./utils/ruscello-web-api');

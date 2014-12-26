@@ -1,6 +1,3 @@
-/// <reference path='../typings/socket.io-client.d.ts' />
-/// <reference path='../typings/Q.d.ts' />
-
 import io = require('socket.io-client');
 import Actions = require('../actions/ruscello-server-action-creators')
 

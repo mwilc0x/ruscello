@@ -1,5 +1,3 @@
-/// <reference path='../typings/eventemitter2.d.ts' />
-
 import RuscelloDispatcher = require('../dispatcher/ruscello-dispatcher');
 import RuscelloConstants = require('../constants/ruscello-constants');
 import RuscelloUtils = require('../utils/ruscello-web-api');

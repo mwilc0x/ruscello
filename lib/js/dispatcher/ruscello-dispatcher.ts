@@ -1,5 +1,3 @@
-/// <reference path='../typings/flux.d.ts' />
-
 import RuscelloConstants = require('../constants/ruscello-constants');
 import flux = require('flux');
 

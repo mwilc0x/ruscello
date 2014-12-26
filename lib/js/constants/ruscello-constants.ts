@@ -1,5 +1,3 @@
-/// <reference path='../typings/keymirror.d.ts' />
-
 import keyMirror = require('keymirror');
 
 interface IRuscelloConstants {
