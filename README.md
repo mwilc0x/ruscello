@@ -6,7 +6,7 @@ a TypeScript Flux implementation
 ### Usage:
 ```bash
 npm install
-node_modules/tsd/build/cli.js  reinstall --save --overwrite
+node_modules/.bin/tsd update -so
 npm start
 ```
 
