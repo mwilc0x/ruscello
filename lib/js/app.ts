@@ -1,6 +1,4 @@
-/// <reference path='../../typings/tsd.d.ts' />
 /// <reference path='../../typings/ruscello.d.ts' />
-/// <reference path='../../typings/keymirror.d.ts' />
 
 import React = require('react');
 import TypedReact = require("typed-react");
