@@ -8,7 +8,7 @@ import cheerio = require('cheerio');
 
 class RuscelloServer {
 
-  private _socket: SocketIO.Server;
+  private _socket: SocketIO.Socket;
 
   constructor() {
 
@@ -24,8 +24,6 @@ class RuscelloServer {
     var io = socketio.listen(server);
 
     io.on('connection', (socket) => {
-      this._socket = socket;
-      
       this._socket.on('get-books-data', () => {
         this.scrapeNYT();
       });
