@@ -6,57 +6,47 @@ import socketio = require('socket.io');
 import request = require('request');
 import cheerio = require('cheerio');
 
-class RuscelloServer {
+var app = express();
+var port = 8080;
+var socket: SocketIO.Socket;
 
-  private _socket: SocketIO.Socket;
+app.use("/", express.static(__dirname + "/public/"));
 
-  constructor() {
+var server = http.createServer(app).listen(port, () => {
+  console.log('express server listening on port ' + port);
+});
 
-    var app = express();
-    var port = 8080;
+var io = socketio.listen(server);
 
-    app.use("/", express.static(__dirname + "/public/"));
+io.on('connection', (socket) => {
+  socket = socket;
 
-    var server = http.createServer(app).listen(port, () => {
-      console.log('express server listening on port ' + port);
-    });
+  socket.on('get-books-data', () => {
+    scrapeNYT(socket);
+  });
+});
 
-    var io = socketio.listen(server);
+function scrapeNYT(socket: SocketIO.Socket) {
+  var data = [];
+  var i = 0;
+  var url = 'http://www.nytimes.com/best-sellers-books/2015-01-04/combined-print-and-e-book-fiction/list.html';
 
-    io.on('connection', (socket) => {
-      this._socket.on('get-books-data', () => {
-        this.scrapeNYT();
-      });
-    });
+  request(url, (error, response, html) => {
+    if(!error){
+      var $ = cheerio.load(html);
 
-  }
-
-  scrapeNYT() {
-    var data = [],
-        i = 0,
-        url = 'http://www.nytimes.com/best-sellers-books/2014-12-28/combined-print-and-e-book-fiction/list.html#';
-
-    request(url, (error, response, html) => {
-      if(!error){
-        var $ = cheerio.load(html);
-
-        $('table.bestSellersList tbody').children().each(() => {
-          if($(this).hasClass('bookDetails')) {
-
-            data.push(
-              {
-                id: i,
-                index: $(this).find('td.index').text(),
-                summary: $(this).find('td.summary').text().trim()
-              }
-            );
-
-            ++i;
+      $('table.bestSellersList tbody tr.bookDetails').each(function() {
+        data.push(
+          {
+            id: i,
+            index: $(this).find('td.index').text(),
+            summary: $(this).find('td.summary').text().trim()
           }
-        });
-        this._socket.emit('book-data', data);
-      }
-    });
-  }
+        );
 
+        ++i;
+      });
+      socket.emit('book-data', data);
+    }
+  });
 }
