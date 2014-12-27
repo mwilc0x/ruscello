@@ -23,9 +23,6 @@
     "q/Q.d.ts": {
       "commit": "0b6a5fb4e0c10177255606034dcfc3ccbc981001"
     },
-    "react/legacy/react-addons-0.11.d.ts": {
-      "commit": "0b6a5fb4e0c10177255606034dcfc3ccbc981001"
-    },
     "react/react.d.ts": {
       "commit": "0b6a5fb4e0c10177255606034dcfc3ccbc981001"
     },
