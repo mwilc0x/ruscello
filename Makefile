@@ -6,7 +6,8 @@ hello:
 	@echo "\n${WELCOME}\n"
 
 server:
-	@node server.js
+	@watchify -p [tsify] server.ts -o server.js; \
+	node server.js
 
 react:
 	@watchify -p [tsify] -t reactify lib/js/app.ts -o bundle.js
