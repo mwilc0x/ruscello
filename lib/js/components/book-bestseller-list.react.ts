@@ -4,7 +4,7 @@ import component = require('./book-bestseller.react');
 import BookStore = require('../stores/book-store');
 
 interface BestSellerListIProps {}
-interface BestSellerListIState { books: Book[]; }
+interface BestSellerListIState { books: { title: string; data: Book[]; }[]; }
 
 class BestSellerListClass extends TypedReact.Component<BestSellerListIProps, BestSellerListIState> {
 
@@ -26,11 +26,22 @@ class BestSellerListClass extends TypedReact.Component<BestSellerListIProps, Bes
     }
 
     render() {
-        var books = this.state.books.map((result) => {
-          return React.createElement(component.Book, { key: result.id, index: result.index, summary: result.summary }, null);
-        });
+        var lists = [];
 
-        return React.DOM.div({ className: "bestSellerList" }, books);
+        for(var i = 0; i < this.state.books.length; i++) {
+          var books = this.state.books[i].data.map((result) => {
+            return React.DOM.li(null,
+              React.createElement(component.Book, { key: result.id, index: result.index, summary: result.summary }, null));
+          });
+
+          lists.push(
+            React.DOM.div({ className: "bestSellerList" },
+              React.DOM.h1(null, this.state.books[i].title),
+              React.DOM.ul(null, books))
+          );
+        }
+
+        return React.DOM.div(null, lists);
     }
 
     private _getStateFromStores() {

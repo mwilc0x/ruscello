@@ -10,7 +10,7 @@ interface RuscelloModel {
   actionTypes: ActionTypes;
 }
 
-interface Book { id: string; index: string; summary: string; }
+interface Book { id: string; index: string; title: string; summary: string; }
 interface PayloadSources { SERVER_ACTION: string; VIEW_ACTION: string; }
 interface ActionTypes { RECEIVE_BOOKS: string; }
 

@@ -8,7 +8,7 @@ class BookStore extends Events.EventEmitter2 {
   private _dispatcher: typeof RuscelloDispatcher;
   private _actionTypes: ActionTypes;
   private _CHANGE_EVENT: string;
-  private _books: Book[];
+  private _books: { title: string; data: Book[]; }[];
 
   constructor() {
     super();
@@ -36,7 +36,7 @@ class BookStore extends Events.EventEmitter2 {
   }
 
   private _addBooks(data) {
-    this._books = data.books;
+    this._books.push(data.list);
   }
 
   private _dispatchToken(payload: any) {
