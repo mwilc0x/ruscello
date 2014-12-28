@@ -2,7 +2,7 @@ import RuscelloDispatcher = require('../dispatcher/ruscello-dispatcher');
 import RuscelloConstants = require('../constants/ruscello-constants');
 
 interface IRuscelloServerActionCreators {
-  receiveBooks(books: any): void;
+  receiveBooks(books: { title: string; books: Book[]; }): void;
 }
 
 class RuscelloServerActionCreators implements IRuscelloServerActionCreators {

@@ -63,6 +63,6 @@ function scrapeSubPage(title, url, socket) {
         }
       );
     });
-    socket.emit('book-data', { title: title, data: data });
+    socket.emit('book-data', { title: title, books: data });
   });
 }
