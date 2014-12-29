@@ -10,7 +10,7 @@ interface AppIState {}
 
 class AppClass extends TypedReact.Component<AppIProps, AppIState> {
     render() {
-          return React.DOM.div(null, React.createElement(component.BestSellerList, null, null));
+          return React.createElement(component.BestSellerList, null, null);
     }
 }
 

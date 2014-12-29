@@ -30,12 +30,12 @@ class BestSellerListClass extends TypedReact.Component<BestSellerListIProps, Bes
 
         for(var i = 0; i < this.state.lists.length; i++) {
           var books = this.state.lists[i].books.map((result) => {
-            return React.DOM.li(null,
-              React.createElement(component.Book, { key: result.id, index: result.index, summary: result.summary }, null));
+            return React.DOM.li({ key: result.id },
+              React.createElement(component.Book, { index: result.index, summary: result.summary }, null));
           });
 
           lists.push(
-            React.DOM.div({ className: "bestSellerList" },
+            React.DOM.div({ className: "bestSellerList", key: this.state.lists[i].title },
               React.DOM.h1(null, this.state.lists[i].title),
               React.DOM.ul(null, books))
           );
