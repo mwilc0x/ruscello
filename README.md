@@ -23,8 +23,12 @@ the corresponding [type definitions](https://github.com/borisyankov/DefinitelyTy
 Also, I am using [typed-react](https://github.com/Asana/typed-react) to help implement React components
 in TypeScript.
 
-## Pull Requests
-If there is anything missing or that you'd like to add, feel free to submit a PR.
+## TODO
+* Get JSX support working with TypeScript [see here](https://github.com/facebook/react/issues/759)
+* ...
+
+## Contributing
+Contributions are welcome, submit a PR or file an issue.
 
 ## License
 MIT License
