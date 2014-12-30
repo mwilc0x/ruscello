@@ -4,7 +4,7 @@ import component = require('./book-bestseller.react');
 import BookStore = require('../stores/book-store');
 
 interface BestSellerListIProps {}
-interface BestSellerListIState { lists: { title: string; books: Book[]; }[]; }
+interface BestSellerListIState { lists: { title: string; books: Book[]; }[]; date: ListDates;}
 
 class BestSellerListClass extends TypedReact.Component<BestSellerListIProps, BestSellerListIState> {
 
@@ -17,7 +17,8 @@ class BestSellerListClass extends TypedReact.Component<BestSellerListIProps, Bes
 
     getInitialState() {
       return {
-        lists: []
+        lists: [],
+        date: {}
       }
     }
 
@@ -41,12 +42,20 @@ class BestSellerListClass extends TypedReact.Component<BestSellerListIProps, Bes
           );
         }
 
-        return React.DOM.div(null, lists);
+        if(this.state.date && this.state.date.curr) {
+          return React.DOM.div(null,
+            React.DOM.h1(null, "For week ending: " + this.state.date.curr),
+            lists);
+        } else {
+          return React.DOM.h1(null, "Loading...");
+        }
+
     }
 
     private _getStateFromStores() {
       return {
-        lists: this._bookStore.getBooks()
+        lists: this._bookStore.getBooks().books,
+        date: this._bookStore.getBooks().date
       };
     }
 

@@ -22,23 +22,29 @@ io.on('connection', (socket) => {
   socket = socket;
 
   socket.on('get-books-data', () => {
-    scrapeNYT(socket);
+    scrapeNYT(socket, 'http://www.nytimes.com/best-sellers-books/');
   });
 });
 
-function scrapeNYT(socket: SocketIO.Socket) {
-  var url = 'http://www.nytimes.com/best-sellers-books/';
+function scrapeNYT(socket: SocketIO.Socket, url: string) {
 
   request(url, (error, response, html) => {
     if(!error){
       var $ = cheerio.load(html);
+
+      var date = {
+        prev: new Date($('#bestsellersPreviousList a span').text()).toDateString(),
+        curr: new Date($('.element1 p').text()).toDateString(),
+        next: new Date($('#bestsellersNextList a span').text()).toDateString()
+      }
 
       $('div.bColumn div.columnGroup.first div.story').each(function(i, story) {
         if($(this).find('h3 a').attr('href')) {
           scrapeSubPage(
             $(this).find('h3').text(),
             $(this).find('h3 a').attr('href'),
-            socket
+            socket,
+            date
           );
         }
       });
@@ -46,7 +52,7 @@ function scrapeNYT(socket: SocketIO.Socket) {
   });
 }
 
-function scrapeSubPage(title, url, socket) {
+function scrapeSubPage(title: string, url: string, socket: SocketIO.Socket, date: any) {
   var data = [];
 
   request(url, (error, response, html) => {
@@ -63,6 +69,6 @@ function scrapeSubPage(title, url, socket) {
         }
       );
     });
-    socket.emit('book-data', { title: title, books: data });
+    socket.emit('book-data', { date: date, title: title, books: data });
   });
 }

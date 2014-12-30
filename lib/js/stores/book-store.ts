@@ -8,19 +8,16 @@ class BookStore extends Events.EventEmitter2 {
   private _dispatcher: typeof RuscelloDispatcher;
   private _actionTypes: ActionTypes;
   private _CHANGE_EVENT: string;
-  private _books: { title: string; books: Book[]; }[];
+  private _bookList: BookListMap;
+  private _date: ListDates;
 
   constructor() {
     super();
     this._dispatcher = RuscelloDispatcher;
     this._actionTypes = new RuscelloConstants().ActionTypes();
     this._CHANGE_EVENT = 'change';
-    this._books = [];
+    this._bookList = {};
     this._dispatcher.register(this._dispatchToken.bind(this));
-  }
-
-  emitChange() {
-    this.emit(this._CHANGE_EVENT);
   }
 
   addChangeListener(callback) {
@@ -32,11 +29,26 @@ class BookStore extends Events.EventEmitter2 {
   }
 
   getBooks() {
-    return this._books;
+    return { books: this._bookList[this._date.curr].books, date: this._date };
+  }
+
+  private _emitChange() {
+    this.emit(this._CHANGE_EVENT);
+  }
+
+  private _setDate(date) {
+    this._date = date;
   }
 
   private _addBooks(data) {
-    this._books.push(data.list);
+    var curr = data.list.date.curr;
+    if(!this._bookList[curr]) {
+      this._bookList[curr] = {
+        books: []
+      }
+    } else {
+      this._bookList[curr].books.push(data.list);
+    }
   }
 
   private _dispatchToken(payload: any) {
@@ -45,8 +57,9 @@ class BookStore extends Events.EventEmitter2 {
     switch(action.type) {
 
       case this._actionTypes.RECEIVE_BOOKS:
+        this._setDate(action.list.date)
         this._addBooks(action);
-        this.emitChange();
+        this._emitChange();
         break;
 
       default:
