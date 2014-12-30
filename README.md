@@ -3,7 +3,7 @@ ruscello
 
 > _Translation: stream_
 
-a TypeScript Flux implementation
+an experimental TypeScript Flux implementation
 
 ![stream](/stream.jpeg)
 
