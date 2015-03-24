@@ -1,6 +1,6 @@
 /// <reference path='../lib/js/components/book-bestseller.react.ts' />
 /// <reference path='../lib/js/components/book-bestseller-list.react.ts' />
-/// <reference path='../node_modules/typed-react/dist/typed-react.d.ts' />
+/// <reference path='../node_modules/typed-react/typed-react.d.ts' />
 /// <reference path='keymirror.d.ts' />
 /// <reference path='tsd.d.ts' />
 
