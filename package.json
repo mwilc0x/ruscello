@@ -12,6 +12,20 @@
       "<rootDir>/node_modules/react"
     ]
   },
+  "watchify": {
+    "transform": [
+      [
+        "reactify",
+        {
+          "es6": true
+        }
+      ]
+    ],
+    "extensions": [
+      ".tsx",
+      ".es6"
+    ]
+  },
   "author": "Mike Wilcox <mwilcox56@gmail.com>",
   "repository": {
     "type": "git",
@@ -19,6 +33,9 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "awesome-typescript-loader": "^0.11.2",
+    "babel-core": "^5.8.20",
+    "babel-loader": "^5.3.2",
     "browser-sync": "^2.4.0",
     "browserify": "^9.0.3",
     "cheerio": "^0.18.0",
@@ -29,14 +46,21 @@
     "jest-cli": "^0.1.18",
     "keymirror": "^0.1.0",
     "react": "^0.13.1",
+    "react-hot-loader": "^1.2.8",
     "reactify": "^1.1.0",
     "request": "^2.51.0",
     "socket.io": "^1.2.1",
     "socket.io-client": "^1.2.1",
+    "ts-loader": "^0.5.0",
     "tsd": "^0.5.7",
-    "tsify": "^0.8.1",
-    "typed-react": "^3.3.1",
+    "tsify": "git://github.com/mjw56/tsify.git#c7afa49df58fc63efb86bab546fdbfe6ff520763",
     "typescript": "^1.4.1",
-    "watchify": "^2.6.0"
+    "watchify": "^2.6.0",
+    "webpack": "^1.10.5",
+    "webpack-dev-server": "^1.10.1"
+  },
+  "dependencies": {
+    "ntypescript": "1.201508050004.1",
+    "react": "^0.13.3"
   }
 }
