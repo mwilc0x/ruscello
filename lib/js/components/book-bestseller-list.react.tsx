@@ -31,23 +31,32 @@ export class BestSellerList extends React.Component<Props, State> {
 
         for(var i = 0; i < this.state.lists.length; i++) {
           var books = this.state.lists[i].books.map((result: any) => {
-            return React.DOM.li({ key: result.id },
-              React.createElement(Book, { index: result.index, summary: result.summary }, null));
+            return (
+              <li key={result.id}>
+                <Book index={result.index}
+                      summary={result.summary} />
+              </li>);
           });
 
           lists.push(
-            React.DOM.div({ className: "bestSellerList", key: this.state.lists[i].title },
-              React.DOM.h1(null, this.state.lists[i].title),
-              React.DOM.ul(null, books))
+            <div className="bestSellerList"
+                 key={this.state.lists[i].title}>
+
+              <h1>{this.state.lists[i].title}</h1>
+              <ul>{books}</ul>
+            </div>
           );
         }
 
         if(this.state.date && this.state.date.curr) {
-          return React.DOM.div(null,
-            React.DOM.h1(null, "For week ending: " + this.state.date.curr),
-            lists);
+          return (
+            <div>
+              <h1>{"For week ending: " + this.state.date.curr}</h1>
+              {lists}
+            </div>
+          )
         } else {
-          return React.DOM.h1(null, "Loading...");
+          return <h1>Loading...</h1>
         }
 
     }
