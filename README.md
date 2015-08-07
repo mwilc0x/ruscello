@@ -8,10 +8,15 @@ an experimental TypeScript Flux implementation
 ![stream](/stream.jpeg)
 
 ### Usage:
+
 ```bash
-npm install
-node_modules/.bin/tsd update -so
-npm start
+make
+```
+
+If you just want to run the app:
+
+```bash
+make dev
 ```
 
 ## About
@@ -26,12 +31,8 @@ The example is using [cheerio](https://github.com/cheeriojs/cheerio) to scrape N
 Under the hood it is using [flux](https://github.com/facebook/flux) with
 the corresponding [type definitions](https://github.com/borisyankov/DefinitelyTyped/tree/master/flux). The type definitions are managed using [tsd](https://github.com/DefinitelyTyped/tsd).
 
-Also, [typed-react](https://github.com/Asana/typed-react) is used to help implement React components
-in TypeScript.
-
 ## TODO
-* Get JSX support working with TypeScript [see here](https://github.com/facebook/react/issues/759)
-* ...
+- [X] Get JSX support working with TypeScript
 
 ## Contributing
 Contributions are welcome, submit a PR or file an issue.
