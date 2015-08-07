@@ -9,6 +9,10 @@ an experimental TypeScript Flux implementation
 
 ### Usage:
 
+Note: Currently I am using [babel-node](https://babeljs.io/docs/usage/cli/#babel-node) to run the node server. It comes standard with the [babel package](https://babeljs.io/docs/setup/#babel_cli).
+
+To install npm + tsd dependencies and run the app:
+
 ```bash
 make
 ```
@@ -22,6 +26,8 @@ make dev
 ## About
 This is experimental and I made it just for fun! :D
 
+This has been updated to use ES6 modules as well as jsx in TypeScript.
+
 I followed the structure of the chat example from [flux](https://github.com/facebook/flux/tree/master/examples/flux-chat) and implemented it in [TypeScript](https://github.com/Microsoft/TypeScript).
 
 I kept this very minimalistic on purpose. Feel free to fork or clone and hack.
@@ -33,6 +39,7 @@ the corresponding [type definitions](https://github.com/borisyankov/DefinitelyTy
 
 ## TODO
 - [X] Get JSX support working with TypeScript
+- [ ] switch to [redux](https://github.com/gaearon/redux)
 
 ## Contributing
 Contributions are welcome, submit a PR or file an issue.
