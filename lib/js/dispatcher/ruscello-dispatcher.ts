@@ -1,5 +1,5 @@
-import RuscelloConstants = require('../constants/ruscello-constants');
-import flux = require('flux');
+import { RuscelloConstants } from '../constants/ruscello-constants';
+import * as flux from 'flux';
 
 interface IRuscelloDispatcher {
   handleServerAction(action: Book[]): void;
@@ -35,4 +35,4 @@ class RuscelloDispatcher extends flux.Dispatcher<any> {
 
 var dispatcher = new RuscelloDispatcher()
 
-export = dispatcher;
+export { dispatcher }

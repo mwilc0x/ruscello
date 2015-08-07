@@ -1,4 +1,4 @@
-import keyMirror = require('keymirror');
+import * as keyMirror from 'keymirror';
 
 interface IRuscelloConstants {
   ActionTypes(): ActionTypes;
@@ -31,4 +31,4 @@ class RuscelloConstants implements IRuscelloConstants {
 
 }
 
-export = RuscelloConstants;
+export { RuscelloConstants }

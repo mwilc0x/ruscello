@@ -1,5 +1,5 @@
-import io = require('socket.io-client');
-import Actions = require('../actions/ruscello-server-action-creators')
+import * as io from 'socket.io-client';
+import { RuscelloServerActionCreators as Actions } from '../actions/ruscello-server-action-creators';
 
 interface IRuscelloWebAPI {
   initData(): void;
@@ -27,4 +27,4 @@ class RuscelloWebAPI implements IRuscelloWebAPI {
 
 }
 
-export = RuscelloWebAPI;
+export { RuscelloWebAPI }

@@ -1,9 +1,9 @@
-import RuscelloDispatcher = require('../dispatcher/ruscello-dispatcher');
-import RuscelloConstants = require('../constants/ruscello-constants');
-import RuscelloUtils = require('../utils/ruscello-web-api');
-import Events = require('eventemitter2');
+import { EventEmitter2 as EventEmitter } from 'eventemitter2';
+import { dispatcher as RuscelloDispatcher } from '../dispatcher/ruscello-dispatcher';
+import { RuscelloConstants } from '../constants/ruscello-constants';
+import { RuscelloWebAPI as RuscelloUtils } from '../utils/ruscello-web-api';
 
-class BookStore extends Events.EventEmitter2 {
+class BookStore extends EventEmitter {
 
   private _dispatcher: typeof RuscelloDispatcher;
   private _actionTypes: ActionTypes;
@@ -69,4 +69,4 @@ class BookStore extends Events.EventEmitter2 {
 
 }
 
-export = BookStore;
+export { BookStore }

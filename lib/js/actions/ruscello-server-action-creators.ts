@@ -1,5 +1,5 @@
-import RuscelloDispatcher = require('../dispatcher/ruscello-dispatcher');
-import RuscelloConstants = require('../constants/ruscello-constants');
+import { dispatcher as RuscelloDispatcher } from '../dispatcher/ruscello-dispatcher';
+import { RuscelloConstants } from '../constants/ruscello-constants';
 
 interface IRuscelloServerActionCreators {
   receiveBooks(books: BookList): void;
@@ -24,4 +24,4 @@ class RuscelloServerActionCreators implements IRuscelloServerActionCreators {
 
 }
 
-export = RuscelloServerActionCreators;
+export { RuscelloServerActionCreators }
