@@ -33,6 +33,10 @@ module.exports = {
     {
         test: /\.ts$/,
         loader: 'awesome-typescript-loader?compiler=ntypescript&module=common&emitRequireType=false'
+    },
+    { // Turn off AMD module loading on eventemitter2
+        test: /eventemitter2/,
+        loader: 'imports?define=>false'
     }]
   }
 };
