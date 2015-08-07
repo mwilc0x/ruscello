@@ -43,6 +43,7 @@
     "eventemitter2": "^0.4.14",
     "express": "^4.10.6",
     "flux": "^2.0.1",
+    "imports-loader": "^0.6.4",
     "jest-cli": "^0.1.18",
     "keymirror": "^0.1.0",
     "react": "^0.13.1",
