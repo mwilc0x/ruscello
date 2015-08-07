@@ -1,10 +1,12 @@
-/// <reference path='typings/tsd.d.ts' />
+var express = require('express');
+var http = require('http');
+var socketio = require('socket.io');
+var request = require('request');
+var cheerio = require('cheerio');
 
-import express = require('express');
-import http = require('http');
-import socketio = require('socket.io');
-import request = require('request');
-import cheerio = require('cheerio');
+var webpack = require('webpack');
+var WebpackDevServer = require('webpack-dev-server');
+var config = require('./webpack.config');
 
 var app = express(),
     port = 8080,
@@ -72,3 +74,19 @@ function scrapeSubPage(title: string, url: string, socket: SocketIO.Socket, date
     socket.emit('book-data', { date: date, title: title, books: data });
   });
 }
+
+
+new WebpackDevServer(webpack(config), {
+  publicPath: config.output.publicPath,
+  hot: true,
+  historyApiFallback: true,
+  stats: {
+    colors: true
+  }
+}).listen(3000, 'localhost', function (err) {
+  if (err) {
+    console.log(err);
+  }
+
+  console.log('webpack is listening on port 3000');
+});
