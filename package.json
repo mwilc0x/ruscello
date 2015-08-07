@@ -12,20 +12,6 @@
       "<rootDir>/node_modules/react"
     ]
   },
-  "watchify": {
-    "transform": [
-      [
-        "reactify",
-        {
-          "es6": true
-        }
-      ]
-    ],
-    "extensions": [
-      ".tsx",
-      ".es6"
-    ]
-  },
   "author": "Mike Wilcox <mwilcox56@gmail.com>",
   "repository": {
     "type": "git",
