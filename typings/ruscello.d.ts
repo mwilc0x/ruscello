@@ -1,6 +1,3 @@
-/// <reference path='../lib/js/components/book-bestseller.react.ts' />
-/// <reference path='../lib/js/components/book-bestseller-list.react.ts' />
-/// <reference path='../node_modules/typed-react/typed-react.d.ts' />
 /// <reference path='keymirror.d.ts' />
 /// <reference path='tsd.d.ts' />
 
@@ -11,7 +8,7 @@ interface RuscelloModel {
   listDates: ListDates;
 }
 
-interface BookList { date: string; title: string; books: Book[]; }
+interface BookList { date?: string; title: string; books: Book[]; }
 interface BookListMap { [index: string]: { books: BookList[]; } }
 interface Book { id: string; index: string; title: string; summary: string; }
 interface PayloadSources { SERVER_ACTION: string; VIEW_ACTION: string; }
