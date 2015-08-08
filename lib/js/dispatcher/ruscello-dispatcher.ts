@@ -1,4 +1,4 @@
-import { RuscelloConstants } from '../constants/ruscello-constants';
+import Constants from '../constants/ruscello-constants';
 import * as flux from 'flux';
 
 interface IRuscelloDispatcher {
@@ -8,16 +8,13 @@ interface IRuscelloDispatcher {
 
 class RuscelloDispatcher extends flux.Dispatcher<any> {
 
-  private _constants: PayloadSources;
-
   constructor() {
     super();
-    this._constants = new RuscelloConstants().PayloadSources();
   }
 
   handleServerAction(action) {
     var payload = {
-      source: this._constants.SERVER_ACTION,
+      source: Constants.PayloadSources.SERVER_ACTION,
       action: action
     };
     this.dispatch(payload);
@@ -25,7 +22,7 @@ class RuscelloDispatcher extends flux.Dispatcher<any> {
 
   handleViewAction(action) {
     var payload = {
-      source: this._constants.VIEW_ACTION,
+      source: Constants.PayloadSources.VIEW_ACTION,
       action: action
     };
     this.dispatch(payload);

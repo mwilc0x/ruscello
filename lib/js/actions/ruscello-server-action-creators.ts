@@ -1,5 +1,5 @@
 import { dispatcher as RuscelloDispatcher } from '../dispatcher/ruscello-dispatcher';
-import { RuscelloConstants } from '../constants/ruscello-constants';
+import Constants from '../constants/ruscello-constants';
 
 interface IRuscelloServerActionCreators {
   receiveBooks(books: BookList): void;
@@ -8,16 +8,14 @@ interface IRuscelloServerActionCreators {
 class RuscelloServerActionCreators implements IRuscelloServerActionCreators {
 
   private _dispatcher: typeof RuscelloDispatcher;
-  private _ActionTypes: ActionTypes;
 
   constructor() {
-    this._ActionTypes = new RuscelloConstants().ActionTypes();
     this._dispatcher = RuscelloDispatcher;
   }
 
   receiveBooks(books) {
     this._dispatcher.handleServerAction({
-      type: this._ActionTypes.RECEIVE_BOOKS,
+      type: Constants.ActionTypes.RECEIVE_BOOKS,
       list: books
     });
   }

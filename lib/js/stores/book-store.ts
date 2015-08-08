@@ -1,6 +1,6 @@
 import { EventEmitter2 as EventEmitter } from 'eventemitter2';
 import { dispatcher as RuscelloDispatcher } from '../dispatcher/ruscello-dispatcher';
-import { RuscelloConstants } from '../constants/ruscello-constants';
+import Constants from '../constants/ruscello-constants';
 import { RuscelloWebAPI as RuscelloUtils } from '../utils/ruscello-web-api';
 
 class BookStore extends EventEmitter {
@@ -14,7 +14,6 @@ class BookStore extends EventEmitter {
   constructor() {
     super();
     this._dispatcher = RuscelloDispatcher;
-    this._actionTypes = new RuscelloConstants().ActionTypes();
     this._CHANGE_EVENT = 'change';
     this._bookList = {};
     this._dispatcher.register(this._dispatchToken.bind(this));
@@ -56,7 +55,7 @@ class BookStore extends EventEmitter {
 
     switch(action.type) {
 
-      case this._actionTypes.RECEIVE_BOOKS:
+      case Constants.ActionTypes.RECEIVE_BOOKS:
         this._setDate(action.list.date)
         this._addBooks(action);
         this._emitChange();
