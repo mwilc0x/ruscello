@@ -8,9 +8,6 @@
     "cheerio/cheerio.d.ts": {
       "commit": "7c27233ae47768442b9b0a40d7f03fadf593fad2"
     },
-    "eventemitter2/eventemitter2.d.ts": {
-      "commit": "7c27233ae47768442b9b0a40d7f03fadf593fad2"
-    },
     "express/express.d.ts": {
       "commit": "7c27233ae47768442b9b0a40d7f03fadf593fad2"
     },
@@ -27,9 +24,6 @@
       "commit": "7c27233ae47768442b9b0a40d7f03fadf593fad2"
     },
     "request/request.d.ts": {
-      "commit": "7c27233ae47768442b9b0a40d7f03fadf593fad2"
-    },
-    "flux/flux.d.ts": {
       "commit": "7c27233ae47768442b9b0a40d7f03fadf593fad2"
     },
     "socket.io-client/socket.io-client.d.ts": {
