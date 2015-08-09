@@ -6,7 +6,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './lib/js/app.ts'
+    './lib/app.tsx'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -15,7 +15,13 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      __CLIENT__: true,
+      __SERVER__: false,
+      __DEVELOPMENT__: true,
+      __DEVTOOLS__: true
+    }),
   ],
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
@@ -28,7 +34,7 @@ module.exports = {
     },
     {
         test: /\.tsx$/,
-        loader: 'babel-loader!awesome-typescript-loader?compiler=ntypescript&module=common&jsx=react'
+        loader: 'babel-loader!awesome-typescript-loader?compiler=ntypescript&module=common&emitRequireType=false&jsx=react'
     },
     {
         test: /\.ts$/,
