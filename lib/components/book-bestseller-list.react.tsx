@@ -17,8 +17,10 @@ export class BestSellerList extends React.Component<P, S> {
         var lists = [],
             date = '';
 
-        for(var i = 0; i < this.props.books.length; i++) {
-          var books = this.props.books[i].list.map((result: any) => {
+        const { books } = this.props;
+
+        for(var i = 0; i < books.length; i++) {
+          var list = books[i].list.map((result: any) => {
             return (
               <li key={result.id}>
                 <Book index={result.index}
@@ -28,19 +30,19 @@ export class BestSellerList extends React.Component<P, S> {
 
           lists.push(
             <div className="bestSellerList"
-                 key={this.props.books[i].title}>
-              <h1>{this.props.books[i].title}</h1>
-              <ul>{books}</ul>
+                 key={books[i].title}>
+              <h1>{books[i].title}</h1>
+              <ul>{list}</ul>
             </div>
           );
 
-          date = this.props.books[i].date.curr;
+          date = books[i].date.curr;
         }
 
-        if(this.props && this.props.books && date !== '') {
+        if(books && Boolean(date)) {
           return (
             <div>
-              <h1>{"For week ending: " + date}</h1>
+              <h1>{`For week ending:${date}`}</h1>
               {lists}
             </div>
           )
