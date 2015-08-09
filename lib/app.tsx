@@ -19,7 +19,7 @@ const composedStore = compose(
 );
 const store = composedStore(combineReducers(reducers));
 
-const _socket = io('http://localhost:8080');
+const _socket: SocketIOClient.Emitter = io('http://localhost:8080');
 _socket.on('book-data', (books: BookList[]) => {
   store.dispatch(fetchBooks(books));
 })
