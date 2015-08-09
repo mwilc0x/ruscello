@@ -9,3 +9,6 @@
 /// <reference path="mime/mime.d.ts" />
 /// <reference path="serve-static/serve-static.d.ts" />
 /// <reference path="eventemitter2/eventemitter2.d.ts" />
+/// <reference path="redux/redux.d.ts" />
+/// <reference path="react-redux/react-redux.d.ts" />
+/// <reference path="redux-devtools/redux-devtools.d.ts" />
