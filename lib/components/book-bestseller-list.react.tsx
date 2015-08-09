@@ -1,9 +1,17 @@
 import * as React from 'react';
 import { Book } from './book-bestseller.react';
 
-export class BestSellerList {
-    props;
-    state;
+interface P {
+  books: BookList[];
+}
+interface S { }
+
+export class BestSellerList extends React.Component<P, S> {
+
+    constructor(props) {
+      super(props);
+      this.props = props;
+    }
 
     render() {
         var lists = [],

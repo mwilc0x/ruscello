@@ -20,7 +20,7 @@ const composedStore = compose(
 const store = composedStore(combineReducers(reducers));
 
 const _socket = io('http://localhost:8080');
-_socket.on('book-data', (books) => {
+_socket.on('book-data', (books: BookList[]) => {
   store.dispatch(fetchBooks(books));
 })
 .on('connect', () => {

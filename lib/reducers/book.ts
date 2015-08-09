@@ -6,9 +6,9 @@ let assign = Object.assign ? Object.assign : function(target: any, ...sources: a
   return;
 };
 
-const initialState = { books: [] }
+const initialState = <Store>{ books: [] }
 
-export function book(state = initialState, action: any) {
+export function book(state: Store = initialState, action: any) {
   switch(action.type) {
     case 'RECEIVE_BOOKS':
       return Object.assign({}, state, {
