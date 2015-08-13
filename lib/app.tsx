@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { createStore, compose, combineReducers } from 'redux';
-import { Provider, connect } from 'react-redux';
-import { BestSellerList } from './components/book-bestseller-list.react';
+import { Provider } from 'react-redux';
+import BestSellerList from './containers/book-bestseller-list.react';
 import { fetchBooks } from './actions/actions';
 import * as reducers from './reducers/book';
 import {devTools, persistState} from 'redux-devtools';
@@ -11,7 +11,6 @@ import {DevTools, DebugPanel, LogMonitor} from 'redux-devtools/lib/react';
 import * as io from 'socket.io-client';
 
 const __DEVTOOLS__ = true;
-
 const composedStore = compose(
   devTools(),
   persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
@@ -27,16 +26,10 @@ _socket.on('book-data', (books: BookList[]) => {
   _socket.emit('get-books-data');
 });
 
-let App = connect((state) => {
-  return {
-    books: state.book.books
-  }
-})(BestSellerList)
-
 // hook in dev-tools, rock-n-roll
 const elements = [
   <Provider store={store} key="provider">
-    {() => <App />}
+    {() => <BestSellerList />}
   </Provider>
 ];
 if (__DEVTOOLS__) {
