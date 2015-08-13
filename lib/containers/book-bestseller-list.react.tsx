@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { Book } from './book-bestseller.react';
+import { Book } from '../components/book-bestseller.react';
+import { connect } from 'react-redux';
 
 interface P {
   books: BookList[];
 }
 interface S { }
 
-export class BestSellerList extends React.Component<P, S> {
+class BestSellerList extends React.Component<P, S> {
 
     constructor(props) {
       super(props);
@@ -51,3 +52,9 @@ export class BestSellerList extends React.Component<P, S> {
         }
     }
 }
+
+export default connect((state) => {
+  return {
+    books: state.book.books
+  }
+})(BestSellerList)
